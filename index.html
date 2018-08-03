@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123349013-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-123349013-1');
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+      function copyToClipboard(element) {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val($(element).text()).select();
+        document.execCommand("copy");
+        $temp.remove();
+      }
+
+      function s4() {
+        return Math.floor((1 + Math.random()) * 0x10000)
+          .toString(16)
+          .substring(1);
+      }
+
+      function uuid() {
+        $("#uuid").text(s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4());
+      }
+
+      $(document).ready(function () {
+        uuid();
+      });
+
+    </script>
+    <style>
+        html {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+
+            background-color: #282a36;
+            color: #f8f8f2;
+        }
+
+        div {
+            height: 200px;
+            width: 800px;
+            position: fixed;
+            top: 30%;
+            left: 50%;
+            margin-top: -100px;
+            margin-left: -400px;
+            font-size: 36px;
+            font-family: Courier;
+        }
+
+        h1 {
+            font-family: sans-serif;
+        }
+
+        .btn {
+            background-color: #ffb86c;
+            border: none;
+            color: #282a36;
+            padding: 24px 32px;
+            font-size: 24px;
+            cursor: pointer;
+            margin-right: 8px;
+            width: 200px;
+        }
+
+        .btn:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+    <title>Generate UUID Online</title>
+</head>
+<body>
+<div>
+    <h1>Random UUID</h1>
+    <p id="uuid"></p>
+    <button id="refresh" onclick="uuid()" class="btn">Refresh</button>
+    <button class="btn" onclick="copyToClipboard('#uuid')">Copy</button>
+</div>
+
+</body>
+</html>
